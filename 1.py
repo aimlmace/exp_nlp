@@ -10,6 +10,9 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 nltk.download('omw-1.4')
 
+stop_words = set(stopwords.words('english'))
+print(len(stop_words))
+print(stop_words)
 
 stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
@@ -40,6 +43,7 @@ def analyse(line):
 	c_line = clean(line)
 
 	stop_words = set(stopwords.words('english'))
+	print(len(stop_words))
 	words = c_line.split()
 	print('Tokenized Words: ',words)
 	tokens = [word for word in words if word not in stop_words]

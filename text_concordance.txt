@@ -1,0 +1,11 @@
+"I need to deposit money at the bank before it closes.",
+"The bank approved my loan application yesterday.",
+"We sat by the bank of the river and enjoyed the sunset.",
+"The flood caused the bank to overflow.",
+"The blood bank is running low on supplies.",
+"The seed bank stores thousands of plant species.",
+"You can bank on him to finish the project on time.",
+"I wouldn’t bank on the weather being nice for the picnic.",
+"The plane began to bank sharply to the left.",
+"The pilot had to bank the aircraft to avoid the storm."
+This is a car

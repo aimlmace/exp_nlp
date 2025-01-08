@@ -21,3 +21,4 @@ for word in set_tokens:
 	print(f'Percentage: {tokens.count(word)/len(tokens)*100:.2f}')
 print()
 print(f'TTR: {(len(set_tokens)/len(tokens))*100:.2f}')
+print()
