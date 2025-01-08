@@ -17,5 +17,5 @@ tokens = [word for scentence in sentences for word in scentence.split() if word 
 text = Text(tokens)
 
 target = input('Enter the word: ')
-
-text.concordance(target)
+context = int(input('Context'))
+text.concordance(target,width = context)
