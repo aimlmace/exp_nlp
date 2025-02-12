@@ -6,4 +6,3 @@ hello I am a girl.
 
 hello I am a boy. 
 
-hello.
