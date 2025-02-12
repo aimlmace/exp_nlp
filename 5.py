@@ -25,7 +25,26 @@ def preprocess(s):
 	lemmatizer = WordNetLemmatizer()
 	tokens = [lemmatizer.lemmatize(token) for token in tokens]
 
+	print(tokens)
+
 	return ' '.join(tokens)
+
+def find(u_input, sentences):
+    pre_user_input = preprocess(u_input.strip())
+    pre_sentences = [preprocess(s.strip()) for s in sentences]
+    
+    vectorizer = TfidfVectorizer()
+    tfidf_matrix = vectorizer.fit_transform([pre_user_input] + pre_sentences)
+    
+    cosine_similarities = (tfidf_matrix * tfidf_matrix.T).toarray()[0][1:]
+    similar_index = cosine_similarities.argmax()
+    return sentences[similar_index]
+
+
+u_input = input('Enter input')
+# 'hello I am a women' 
+
+print(find(u_input,sentences))
 # ans = [preprocess(s) for s in sentences]
 # print(ans)
 
@@ -55,19 +74,3 @@ def preprocess(s):
 # 	sorted_indices = np.argsort(score)[::-1]
 # 	return pre_sentences[sorted_indices[0]]
 
-def find(u_input, sentences):
-    pre_user_input = preprocess(u_input.strip())
-    pre_sentences = [preprocess(s.strip()) for s in sentences]
-    
-    vectorizer = TfidfVectorizer()
-    tfidf_matrix = vectorizer.fit_transform([pre_user_input] + pre_sentences)
-    
-    # Calculate cosine similarities between the user input (first row) and all sentences
-    cosine_similarities = (tfidf_matrix * tfidf_matrix.T).toarray()[0][1:]
-    similar_index = cosine_similarities.argmax()
-    return sentences[similar_index]
-
-
-u_input = 'hello I am a women' 
-
-print(find(u_input,sentences))
