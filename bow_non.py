@@ -1,13 +1,18 @@
-with open('bow_data.txt','r') as data:
-	documents = [line.strip() for line in data.readlines()]
-print(documents)
 from sklearn.feature_extraction.text import CountVectorizer
+from nltk.tokenize import sent_tokenize
 
-vectorizer = CountVectorizer(binary = True)
-X = vectorizer.fit_transform(documents)
-print(X)
+corpus = "Python is amazing and fun. Python is not just fun but also powerful. Learning Python is fun!"
+corpus = sent_tokenize(corpus)
+print("sentences:")
+for sent in corpus:
+    print(sent)
 
-with open('bow_output.txt', 'w') as f:
-    f.write(" ".join(vectorizer.get_feature_names_out()) + "\n")
-    for row in X.toarray():
-        f.write(" ".join(map(str, row)) + "\n")
+vectorizer = CountVectorizer()
+
+X = vectorizer.fit_transform(corpus)
+
+print("Vocabulary:", vectorizer.get_feature_names_out())
+
+for idx, sentence in enumerate(corpus):
+    sentence_vector = X[idx].toarray()
+    print(f"Bag of Words for sentence {idx+1}: {sentence_vector}")

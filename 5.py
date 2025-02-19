@@ -5,10 +5,6 @@ from nltk.stem import WordNetLemmatizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import numpy as np
 
-# nltk.download('stopwods')
-# nltk.download('punkt')
-# nltk.download('wordnet')
-
 sentences = []
 
 with open('data5.txt', 'r') as file:
@@ -42,9 +38,8 @@ def find(u_input, sentences):
 
 
 u_input = input('Enter input')
-# 'hello I am a women' 
 
-print(find(u_input,sentences))
+print('Most Similar Sentence: ',find(u_input,sentences))
 # ans = [preprocess(s) for s in sentences]
 # print(ans)
 
