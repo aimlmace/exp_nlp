@@ -56,4 +56,3 @@ for scentence in sentences:
 			print()
 			break
 
-

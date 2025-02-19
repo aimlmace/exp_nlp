@@ -3,11 +3,8 @@ import nltk
 from nltk.corpus import stopwords, wordnet
 from nltk.stem import WordNetLemmatizer
 import math
-from nltk.tokenize import sent_tokenize
-
 
 lemmatizer = WordNetLemmatizer()
-
 
 #for tagging
 def get_wordnet_pos(treebank_tag):
@@ -20,7 +17,7 @@ def get_wordnet_pos(treebank_tag):
     elif treebank_tag.startswith('R'):
         return wordnet.ADV
     else:
-        return wordnet.NOUN 
+        return wordnet.NOUN
 
 # Preprocess
 def preprocess_text(text):
@@ -65,7 +62,6 @@ def cosine_similarity(vec1, vec2):
     magnitude_vec1 = math.sqrt(sum(x**2 for x in vec1))
     magnitude_vec2 = math.sqrt(sum(y**2 for y in vec2))
     
-    # Cosine similarity
     if magnitude_vec1 == 0 or magnitude_vec2 == 0:
         return 0
     return dot_product / (magnitude_vec1 * magnitude_vec2)
@@ -75,11 +71,9 @@ for vector in vectors:
     similarity = cosine_similarity(svector, vector)
     similarities.append(similarity)
 
-# Print similarities for each document
 for i, sim in enumerate(similarities):
     print(f"Cosine Similarity with Document {i + 1}: {sim:.4f}")
 
-# Optional: Write the vectors to an output file
 with open('bow_out.txt', 'w') as out:
     for vector in vectors:
         out.write(' '.join(map(str, vector)) + '\n'+ '\n')
